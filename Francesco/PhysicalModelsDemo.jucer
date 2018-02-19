@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="pvqjH0" name="PhysicalModelsDemo" displaySplashScreen="1"
+              reportAppUsage="1" splashScreenColour="Dark" projectType="audioplug"
+              version="1.0.0" bundleIdentifier="com.yourcompany.PhysicalModelsDemo"
+              includeBinaryInAppConfig="1" cppLanguageStandard="11" companyCopyright=""
+              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" buildStandalone="1" enableIAA="0" pluginName="PhysicalModelsDemo"
+              pluginDesc="PhysicalModelsDemo" pluginManufacturer="Francesco Bigoni"
+              pluginManufacturerCode="Manu" pluginCode="Pvqj" pluginChannelConfigs=""
+              pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
+              pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="PhysicalModelsDemoAU"
+              pluginRTASCategory="" aaxIdentifier="com.yourcompany.PhysicalModelsDemo"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.2.0">
+  <MAINGROUP id="n4ipRu" name="PhysicalModelsDemo">
+    <GROUP id="{E5D7300A-D10E-9A58-8E50-D14FD2F1187D}" name="Source">
+      <FILE id="kdL3XN" name="FluteCook.cpp" compile="1" resource="0" file="Source/FluteCook.cpp"/>
+      <FILE id="XkswYV" name="FluteCook.h" compile="0" resource="0" file="Source/FluteCook.h"/>
+      <FILE id="sHGIB1" name="ClarinetCook.cpp" compile="1" resource="0"
+            file="Source/ClarinetCook.cpp"/>
+      <FILE id="T6hc9T" name="ClarinetCook.h" compile="0" resource="0" file="Source/ClarinetCook.h"/>
+      <FILE id="v2EbX8" name="KSExtended.cpp" compile="1" resource="0" file="Source/KSExtended.cpp"/>
+      <FILE id="OgSGsR" name="KSExtended.h" compile="0" resource="0" file="Source/KSExtended.h"/>
+      <FILE id="BxPB9X" name="FractionalDelay.cpp" compile="1" resource="0"
+            file="Source/FractionalDelay.cpp"/>
+      <FILE id="ZlGe95" name="FractionalDelay.h" compile="0" resource="0"
+            file="Source/FractionalDelay.h"/>
+      <FILE id="UWgu51" name="Parameters.cpp" compile="1" resource="0" file="Source/Parameters.cpp"/>
+      <FILE id="KiuyCa" name="Parameters.h" compile="0" resource="0" file="Source/Parameters.h"/>
+      <FILE id="GIq86M" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="hR4xLg" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="h7bdtS" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="JjDmq5" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="jnsw1a" name="SynthSound.cpp" compile="1" resource="0" file="Source/SynthSound.cpp"/>
+      <FILE id="DKPhYo" name="SynthSound.h" compile="0" resource="0" file="Source/SynthSound.h"/>
+      <FILE id="t0GPAv" name="SynthVoice.cpp" compile="1" resource="0" file="Source/SynthVoice.cpp"/>
+      <FILE id="H6ytyz" name="SynthVoice.h" compile="0" resource="0" file="Source/SynthVoice.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <VS2017 targetFolder="Builds/VisualStudio2017">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="1"
+                       linkTimeOptimisation="0" isDebug="1" optimisation="1" targetName="PhysicalModelsDemo"
+                       vstBinaryLocation="c:\VSTPlugins" vst3BinaryLocation="c:\VSTPlugins"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="PhysicalModelsDemo"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2017>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+</JUCERPROJECT>
