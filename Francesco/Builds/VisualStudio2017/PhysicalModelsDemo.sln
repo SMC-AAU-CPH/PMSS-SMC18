@@ -1,0 +1,47 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2017
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysicalModelsDemo - Standalone Plugin", "PhysicalModelsDemo_StandalonePlugin.vcxproj", "{9D7B741C-7410-7706-ACA0-55B8862D0D07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6FC396A4-4871-246A-07A0-903856941D1A} = {6FC396A4-4871-246A-07A0-903856941D1A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysicalModelsDemo - VST", "PhysicalModelsDemo_VST.vcxproj", "{7C493C49-46D9-6500-61F9-A0950E015890}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6FC396A4-4871-246A-07A0-903856941D1A} = {6FC396A4-4871-246A-07A0-903856941D1A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysicalModelsDemo - VST3", "PhysicalModelsDemo_VST3.vcxproj", "{C9407299-A7C3-833B-CD54-8D17521DBA2E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6FC396A4-4871-246A-07A0-903856941D1A} = {6FC396A4-4871-246A-07A0-903856941D1A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysicalModelsDemo - Shared Code", "PhysicalModelsDemo_SharedCode.vcxproj", "{6FC396A4-4871-246A-07A0-903856941D1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C493C49-46D9-6500-61F9-A0950E015890}.Debug|x64.ActiveCfg = Debug|x64
+		{7C493C49-46D9-6500-61F9-A0950E015890}.Debug|x64.Build.0 = Debug|x64
+		{7C493C49-46D9-6500-61F9-A0950E015890}.Release|x64.ActiveCfg = Release|x64
+		{7C493C49-46D9-6500-61F9-A0950E015890}.Release|x64.Build.0 = Release|x64
+		{C9407299-A7C3-833B-CD54-8D17521DBA2E}.Debug|x64.ActiveCfg = Debug|x64
+		{C9407299-A7C3-833B-CD54-8D17521DBA2E}.Debug|x64.Build.0 = Debug|x64
+		{C9407299-A7C3-833B-CD54-8D17521DBA2E}.Release|x64.ActiveCfg = Release|x64
+		{C9407299-A7C3-833B-CD54-8D17521DBA2E}.Release|x64.Build.0 = Release|x64
+		{9D7B741C-7410-7706-ACA0-55B8862D0D07}.Debug|x64.ActiveCfg = Debug|x64
+		{9D7B741C-7410-7706-ACA0-55B8862D0D07}.Debug|x64.Build.0 = Debug|x64
+		{9D7B741C-7410-7706-ACA0-55B8862D0D07}.Release|x64.ActiveCfg = Release|x64
+		{9D7B741C-7410-7706-ACA0-55B8862D0D07}.Release|x64.Build.0 = Release|x64
+		{6FC396A4-4871-246A-07A0-903856941D1A}.Debug|x64.ActiveCfg = Debug|x64
+		{6FC396A4-4871-246A-07A0-903856941D1A}.Debug|x64.Build.0 = Debug|x64
+		{6FC396A4-4871-246A-07A0-903856941D1A}.Release|x64.ActiveCfg = Release|x64
+		{6FC396A4-4871-246A-07A0-903856941D1A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
