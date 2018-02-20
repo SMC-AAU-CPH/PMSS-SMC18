@@ -36,22 +36,36 @@ private:
 	PhysicalModelsDemoAudioProcessor& processor;
 	AudioProcessorValueTreeState& valueTreeState;
 
-	ScopedPointer<SliderAttachment> aAttachment;
-	ScopedPointer<SliderAttachment> bAttachment;
-	ScopedPointer<SliderAttachment> cAttachment;
-	ScopedPointer<SliderAttachment> dAttachment;
-	ScopedPointer<SliderAttachment> eAttachment;
+	ScopedPointer<SliderAttachment> pluckLengthAttachment;
+	ScopedPointer<SliderAttachment> pluckPointAttachment;
+	ScopedPointer<SliderAttachment> lowPassCoefAttachment;
+	ScopedPointer<SliderAttachment> reedClosureAttachment;
+	ScopedPointer<SliderAttachment> mouthPressureAttachment;
+	ScopedPointer<SliderAttachment> mAttachment;
+	ScopedPointer<SliderAttachment> blowLengthAttachment;
+	ScopedPointer<SliderAttachment> embochureDelayAttachment;
+	ScopedPointer<SliderAttachment> noiseAmountAttachment;
 	ScopedPointer<ComboBoxAttachment> menuAttachment;
 
 	// Create sliders and labels for parameters
-	Slider aSlider;
-	Slider bSlider;
-	Slider cSlider;
-	Slider dSlider;
-	Label aLabel;
-	Label bLabel;
-	Label cLabel;
-	Label dLabel;
+	Slider pluckLengthSlider;
+	Slider pluckPointSlider;
+	Slider lowPassCoefSlider;
+	Slider reedClosureSlider;
+	Slider mouthPressureSlider;
+	Slider mSlider;
+	Slider blowLengthSlider;
+	Slider embochureDelaySlider;
+	Slider noiseAmountSlider;
+	Label pluckLengthLabel;
+	Label pluckPointLabel;
+	Label lowPassCoefLabel;
+	Label reedClosureLabel;
+	Label mouthPressureLabel;
+	Label mLabel;
+	Label blowLengthLabel;
+	Label embochureDelayLabel;
+	Label noiseAmountLabel;
 
 	ComboBox menu;
 
