@@ -17,41 +17,77 @@ PhysicalModelsDemoAudioProcessorEditor::PhysicalModelsDemoAudioProcessorEditor(P
 	: AudioProcessorEditor(&p), processor(p), valueTreeState(params.valueTree)
 {
 
-	aAttachment = new SliderAttachment(valueTreeState, "pluckLength", aSlider);
-	bAttachment = new SliderAttachment(valueTreeState, "pluckPoint", bSlider);
-	cAttachment = new SliderAttachment(valueTreeState, "lowPassCoef", cSlider);
-	dAttachment = new SliderAttachment(valueTreeState, "m", dSlider);
+	pluckLengthAttachment = new SliderAttachment(valueTreeState, "pluckLength", pluckLengthSlider);
+	pluckPointAttachment = new SliderAttachment(valueTreeState, "pluckPoint", pluckPointSlider);
+	lowPassCoefAttachment = new SliderAttachment(valueTreeState, "lowPassCoef", lowPassCoefSlider);
+	reedClosureAttachment = new SliderAttachment(valueTreeState, "reedClosure", reedClosureSlider);
+	mouthPressureAttachment = new SliderAttachment(valueTreeState, "mouthPressure", mouthPressureSlider);
+	mAttachment = new SliderAttachment(valueTreeState, "m", mSlider);
+	blowLengthAttachment = new SliderAttachment(valueTreeState, "blowLength", blowLengthSlider);
+	embochureDelayAttachment = new SliderAttachment(valueTreeState, "embochureDelay", embochureDelaySlider);
+	noiseAmountAttachment = new SliderAttachment(valueTreeState, "noiseAmount", noiseAmountSlider);
 	menuAttachment = new ComboBoxAttachment(valueTreeState, "instType", menu);
 
 	// Make sure that before the constructor has finished, you've set the
 	// editor's size to whatever you need it to be.
 	setSize(800, 600);
 
-	aSlider.setSliderStyle(Slider::Rotary);
-	aSlider.setTextValueSuffix(" ms");
-	aSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, aSlider.getTextBoxHeight());
-	aLabel.setText("Pluck Length", dontSendNotification);
-	aLabel.setJustificationType(Justification::centred);
-	aLabel.attachToComponent(&aSlider, false);
+	pluckLengthSlider.setSliderStyle(Slider::Rotary);
+	pluckLengthSlider.setTextValueSuffix(" ms");
+	pluckLengthSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, pluckLengthSlider.getTextBoxHeight());
+	pluckLengthLabel.setText("Pluck Duration", dontSendNotification);
+	pluckLengthLabel.setJustificationType(Justification::centred);
+	pluckLengthLabel.attachToComponent(&pluckLengthSlider, false);
 
-	bSlider.setSliderStyle(Slider::Rotary);
-	bSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, bSlider.getTextBoxHeight());
-	bLabel.setText("Pluck Point (bridge -> fret)", dontSendNotification);
-	bLabel.setJustificationType(Justification::centred);
-	bLabel.attachToComponent(&bSlider, false);
+	pluckPointSlider.setSliderStyle(Slider::Rotary);
+	pluckPointSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, pluckPointSlider.getTextBoxHeight());
+	pluckPointLabel.setText("Pluck Point (bridge -> fret)", dontSendNotification);
+	pluckPointLabel.setJustificationType(Justification::centred);
+	pluckPointLabel.attachToComponent(&pluckPointSlider, false);
 
-	cSlider.setSliderStyle(Slider::Rotary);
-	cSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, cSlider.getTextBoxHeight());
-	cLabel.setText("Lowpass coefficient", dontSendNotification);
-	cLabel.setJustificationType(Justification::centred);
-	cLabel.attachToComponent(&cSlider, false);
+	lowPassCoefSlider.setSliderStyle(Slider::Rotary);
+	lowPassCoefSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, lowPassCoefSlider.getTextBoxHeight());
+	lowPassCoefLabel.setText("Lowpass coefficient", dontSendNotification);
+	lowPassCoefLabel.setJustificationType(Justification::centred);
+	lowPassCoefLabel.attachToComponent(&lowPassCoefSlider, false);
 
-	dSlider.setSliderStyle(Slider::Rotary);
-	dSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, dSlider.getTextBoxHeight());
-	dSlider.setAlpha(0.0);
-	dLabel.setText("", dontSendNotification);
-	dLabel.setJustificationType(Justification::centred);
-	dLabel.attachToComponent(&dSlider, false);
+	reedClosureSlider.setSliderStyle(Slider::Rotary);
+	reedClosureSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, reedClosureSlider.getTextBoxHeight());
+	reedClosureLabel.setText("Reed Closure DeltaPressure", dontSendNotification);
+	reedClosureLabel.setJustificationType(Justification::centred);
+	reedClosureLabel.attachToComponent(&reedClosureSlider, false);
+
+	mouthPressureSlider.setSliderStyle(Slider::Rotary);
+	mouthPressureSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, mouthPressureSlider.getTextBoxHeight());
+	mouthPressureLabel.setText("Mouth Pressure", dontSendNotification);
+	mouthPressureLabel.setJustificationType(Justification::centred);
+	mouthPressureLabel.attachToComponent(&mouthPressureSlider, false);
+
+	mSlider.setSliderStyle(Slider::Rotary);
+	mSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, mSlider.getTextBoxHeight());
+	mLabel.setText("Stiffness + Embochure", dontSendNotification);
+	mLabel.setJustificationType(Justification::centred);
+	mLabel.attachToComponent(&mSlider, false);
+
+	blowLengthSlider.setSliderStyle(Slider::Rotary);
+	blowLengthSlider.setTextValueSuffix(" ms");
+	blowLengthSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, blowLengthSlider.getTextBoxHeight());
+	blowLengthLabel.setText("Blow Duration", dontSendNotification);
+	blowLengthLabel.setJustificationType(Justification::centred);
+	blowLengthLabel.attachToComponent(&blowLengthSlider, false);
+
+	embochureDelaySlider.setSliderStyle(Slider::Rotary);
+	embochureDelaySlider.setTextValueSuffix(" ms");
+	embochureDelaySlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, embochureDelaySlider.getTextBoxHeight());
+	embochureDelayLabel.setText("Embochure Delay", dontSendNotification);
+	embochureDelayLabel.setJustificationType(Justification::centred);
+	embochureDelayLabel.attachToComponent(&embochureDelaySlider, false);
+
+	noiseAmountSlider.setSliderStyle(Slider::Rotary);
+	noiseAmountSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 150, noiseAmountSlider.getTextBoxHeight());
+	noiseAmountLabel.setText("Noise Amount", dontSendNotification);
+	noiseAmountLabel.setJustificationType(Justification::centred);
+	noiseAmountLabel.attachToComponent(&noiseAmountSlider, false);
 
 	menu.setJustificationType(Justification::centred);
 	menu.addItem("K-S Extended", 1);
@@ -59,14 +95,12 @@ PhysicalModelsDemoAudioProcessorEditor::PhysicalModelsDemoAudioProcessorEditor(P
 	menu.addItem("Flute", 3);
 	menu.setSelectedId(1, false);
 
-	addAndMakeVisible(&aSlider);
-	addAndMakeVisible(&aLabel);
-	addAndMakeVisible(&bSlider);
-	addAndMakeVisible(&bLabel);
-	addAndMakeVisible(&cSlider);
-	addAndMakeVisible(&cLabel);
-	addAndMakeVisible(&dSlider);
-	addAndMakeVisible(&dLabel);
+	addAndMakeVisible(&pluckLengthSlider);
+	addAndMakeVisible(&pluckLengthLabel);
+	addAndMakeVisible(&pluckPointSlider);
+	addAndMakeVisible(&pluckPointLabel);
+	addAndMakeVisible(&lowPassCoefSlider);
+	addAndMakeVisible(&lowPassCoefLabel);
 	addAndMakeVisible(&menu);
 }
 
@@ -84,72 +118,91 @@ void PhysicalModelsDemoAudioProcessorEditor::paint(Graphics& g)
 	g.setFont(15.0f);
 
 	if (processor.menuChoice != processor.prevMenuChoice)
+	{
 		switch (processor.menuChoice)
 		{
 		case 0:
-			aAttachment.release();
-			aAttachment = new SliderAttachment(valueTreeState, "pluckLength", aSlider);
-			aSlider.setTextValueSuffix(" ms");
-			aLabel.setText("Pluck Length", dontSendNotification);
-			aSlider.repaint();
-			aLabel.repaint();
-			bAttachment.release();
-			bAttachment = new SliderAttachment(valueTreeState, "pluckPoint", bSlider);
-			bSlider.setTextValueSuffix("");
-			bLabel.setText("Pluck Point (bridge -> fret)", dontSendNotification);
-			bSlider.repaint();
-			bLabel.repaint();
-			dAttachment.release();
-			dSlider.setAlpha(0.0);
-			dSlider.repaint();
-			dLabel.setText("", dontSendNotification);
-			dLabel.repaint();
+			addAndMakeVisible(&pluckLengthSlider);
+			addAndMakeVisible(&pluckLengthLabel);
+			addAndMakeVisible(&pluckPointSlider);
+			addAndMakeVisible(&pluckPointLabel);
+			removeChildComponent(&reedClosureSlider);
+			removeChildComponent(&reedClosureLabel);
+			removeChildComponent(&blowLengthSlider);
+			removeChildComponent(&blowLengthLabel);
+			removeChildComponent(&mouthPressureSlider);
+			removeChildComponent(&mouthPressureLabel);
+			removeChildComponent(&mSlider);
+			removeChildComponent(&mLabel);
+			removeChildComponent(&blowLengthSlider);
+			removeChildComponent(&blowLengthLabel);
+			removeChildComponent(&embochureDelaySlider);
+			removeChildComponent(&embochureDelayLabel);
+			removeChildComponent(&noiseAmountSlider);
+			removeChildComponent(&noiseAmountLabel);
 			break;
 		case 1:
-			aAttachment.release();
-			aAttachment = new SliderAttachment(valueTreeState, "mouthPressure", aSlider);
-			aSlider.setTextValueSuffix("");
-			aLabel.setText("Mouth Pressure", dontSendNotification);
-			aSlider.repaint();
-			aLabel.repaint();
-			bAttachment.release();
-			bAttachment = new SliderAttachment(valueTreeState, "reedClosure", bSlider);
-			bSlider.setTextValueSuffix("");
-			bLabel.setText("Reed Closure deltaPressure", dontSendNotification);
-			bSlider.repaint();
-			bLabel.repaint();
-			dAttachment.release();
-			dAttachment = new SliderAttachment(valueTreeState, "m", dSlider);
-			dSlider.setAlpha(1.0);
-			dSlider.setTextValueSuffix("");
-			dLabel.setText("Stiffness + Embochure", dontSendNotification);
-			dSlider.repaint();
-			dLabel.repaint();
+			removeChildComponent(&pluckLengthSlider);
+			removeChildComponent(&pluckLengthLabel);
+			removeChildComponent(&pluckPointSlider);
+			removeChildComponent(&pluckPointLabel);
+			addAndMakeVisible(&reedClosureSlider);
+			addAndMakeVisible(&reedClosureLabel);
+			addAndMakeVisible(&blowLengthSlider);
+			addAndMakeVisible(&blowLengthLabel);
+			addAndMakeVisible(&mouthPressureSlider);
+			addAndMakeVisible(&mouthPressureLabel);
+			addAndMakeVisible(&mSlider);
+			addAndMakeVisible(&mLabel);
+			removeChildComponent(&blowLengthSlider);
+			removeChildComponent(&blowLengthLabel);
+			removeChildComponent(&embochureDelaySlider);
+			removeChildComponent(&embochureDelayLabel);
+			removeChildComponent(&noiseAmountSlider);
+			removeChildComponent(&noiseAmountLabel);
 			break;
 		case 2:
-			aAttachment.release();
-			aAttachment = new SliderAttachment(valueTreeState, "blowLength", aSlider);
-			aSlider.setTextValueSuffix(" ms");
-			aLabel.setText("Blow Length", dontSendNotification);
-			aSlider.repaint();
-			aLabel.repaint();
-			bAttachment.release();
-			bAttachment = new SliderAttachment(valueTreeState, "embochureDelay", bSlider);
-			bSlider.setTextValueSuffix(" ms");
-			bLabel.setText("Embochure Delay", dontSendNotification);
-			bSlider.repaint();
-			bLabel.repaint();
-			dAttachment.release();
-			dAttachment = new SliderAttachment(valueTreeState, "noiseAmount", dSlider);
-			dSlider.setAlpha(1.0);
-			dSlider.setTextValueSuffix("");
-			dLabel.setText("Noise Amount", dontSendNotification);
-			dSlider.repaint();
-			dLabel.repaint();
+			removeChildComponent(&pluckLengthSlider);
+			removeChildComponent(&pluckLengthLabel);
+			removeChildComponent(&pluckPointSlider);
+			removeChildComponent(&pluckPointLabel);
+			removeChildComponent(&reedClosureSlider);
+			removeChildComponent(&reedClosureLabel);
+			removeChildComponent(&blowLengthSlider);
+			removeChildComponent(&blowLengthLabel);
+			removeChildComponent(&mouthPressureSlider);
+			removeChildComponent(&mouthPressureLabel);
+			removeChildComponent(&mSlider);
+			removeChildComponent(&mLabel);
+			addAndMakeVisible(&blowLengthSlider);
+			addAndMakeVisible(&blowLengthLabel);
+			addAndMakeVisible(&embochureDelaySlider);
+			addAndMakeVisible(&embochureDelayLabel);
+			addAndMakeVisible(&noiseAmountSlider);
+			addAndMakeVisible(&noiseAmountLabel);
 			break;
 		default:
 			break;
 		}
+
+		pluckLengthSlider.repaint();
+		pluckPointSlider.repaint();
+		reedClosureSlider.repaint();
+		mouthPressureSlider.repaint();
+		mSlider.repaint();
+		blowLengthSlider.repaint();
+		embochureDelaySlider.repaint();
+		noiseAmountSlider.repaint();
+		pluckLengthLabel.repaint();
+		pluckPointLabel.repaint();
+		reedClosureLabel.repaint();
+		mouthPressureLabel.repaint();
+		mLabel.repaint();
+		blowLengthLabel.repaint();
+		embochureDelayLabel.repaint();
+		noiseAmountLabel.repaint();
+	}
+		
 
 }
 
@@ -166,14 +219,19 @@ void PhysicalModelsDemoAudioProcessorEditor::resized()
 
 	menu.setBounds(2 * x, y, 3 * size, size / 2);
 	y += menu.getHeight() + marginY;
-	aSlider.setBounds(x, y, size, size);
-	x += aSlider.getWidth() + marginX;
-	bSlider.setBounds(x, y, size, size);
-	x += bSlider.getWidth() + marginX;
-	cSlider.setBounds(x, y, size, size);
-	y += cSlider.getHeight() + marginY;
+	pluckLengthSlider.setBounds(x, y, size, size);
+	reedClosureSlider.setBounds(x, y, size, size);
+	blowLengthSlider.setBounds(x, y, size, size);
+	x += pluckLengthSlider.getWidth() + marginX;
+	pluckPointSlider.setBounds(x, y, size, size);
+	mouthPressureSlider.setBounds(x, y, size, size);
+	embochureDelaySlider.setBounds(x, y, size, size);
+	x += pluckPointSlider.getWidth() + marginX;
+	lowPassCoefSlider.setBounds(x, y, size, size);
+	y += lowPassCoefSlider.getHeight() + marginY;
 	x = marginX;
-	dSlider.setBounds(x, y, size, size);
+	mSlider.setBounds(x, y, size, size);
+	noiseAmountSlider.setBounds(x, y, size, size);
 
 	int numX = 3;
 	int numY = 3;
