@@ -8,17 +8,17 @@ N = fs;
 
 stringLength = floor(fs/freq);
 l = stringLength/2;
-nutDelay = zeros(1,l);
-brigdeDelay = zeros(1,l);
-
-%Interaction
 Pb = 0.15;
 Fb = 0.3;
 Vb = 0.7;
 
+nutLength = floor(stringLength*(1-Pb))
+brigdeLength = floor(stringLength*Pb)
+nutDelay = zeros(1,nutLength);
+brigdeDelay = zeros(1,brigdeLength);
+
+
 Z = 0.1;
-StaticFrictionCoeff = 0.02;
-DynamicFrictionCoeff = 0.01;
 
 Von = 0; 
 Vob = 0;
@@ -32,12 +32,18 @@ dVob = 0;
 output = zeros(N,1);
 
 for i = 1:N
-    Vin = nutDelay(l);
-    Vib = brigdeDelay(l);
+    Vin = nutDelay(nutLength);
+    Vib = brigdeDelay(brigdeLength);
     Vh = Vin + Vib;
     
-    v = 0;
-    f = Fb *(0.3 * (0.1/(0.2 + abs(v - Vb))));
+    v = sqrt((Vh*0.2)/(0.2 - Vb - Vh) - (Vb*Vh)/(0.2 - Vb - Vh) + (0.4*Fb)/(2*Z*(0.2 + 1 - Vb - Vh)));
+    if v - Vb > 0
+        vVb = 0;
+    else
+        vVb = v - Vb;
+    end
+    
+    f = Fb * (0.3 * (0.1/(0.2 + abs(vVb))));
     
     Von = Vib + f/(2*Z); 
     Vob = Vin + f/(2*Z);
@@ -45,15 +51,15 @@ for i = 1:N
     inputToNutDelay = 0.5*(Von + dVon);
     inputToBrigdeDelay = 0.5*(Vob + dVob);
     
-    nutDelay = [inputToNutDelay, nutDelay(1:l-1)];
-    brigdeDelay = [inputToBrigdeDelay, brigdeDelay(1:l-1)];
+    nutDelay = [inputToNutDelay, nutDelay(1:nutLength-1)];
+    brigdeDelay = [inputToBrigdeDelay, brigdeDelay(1:brigdeLength-1)];
     
     output(i) = Vh;
     
-    dVon = Von; 
-    dVoB = Vob;
+    dVon = inputToNutDelay; 
+    dVoB = inputToBrigdeDelay;
 end
 
 plot(output)
-
+soundsc(output,fs)
 
