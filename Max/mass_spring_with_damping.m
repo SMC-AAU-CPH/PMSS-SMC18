@@ -32,7 +32,7 @@ soundsc(x,fs);
 %% Simple Mass-Spring System with Damping:
 
 % Discretized with the "backwards finite difference" equation:
-% Equation x[n] = (2*m + b*T / (T*T)*k + m + b*T)*x[n-1] + (m / (T*T)*k + m + b*T)*x[n-2]
+% Equation x[n] = (2*m + b*T / (T*T)*k + m + b*T)*x[n-1] - (m / (T*T)*k + m + b*T)*x[n-2]
 
 clc; clear;
 
